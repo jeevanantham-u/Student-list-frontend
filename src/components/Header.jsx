@@ -1,4 +1,5 @@
 import { FaSearch } from "react-icons/fa";
+import { IoPersonAdd } from "react-icons/io5";
 
 const Header = () => {
   return (
@@ -8,9 +9,10 @@ const Header = () => {
         <div>
           <form>
             <input type='text' placeholder='Search student'/>
-            <button><FaSearch /></button>
+            <button type="submit"><FaSearch /></button>
           </form>
         </div>
+        <button><IoPersonAdd /></button>
       </header>
     </div>
     

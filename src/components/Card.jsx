@@ -2,6 +2,11 @@ import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 
 const Card = (props) => {
+
+  function onDelete () {
+    return props.toDelete(props.id);
+  }
+
     
   return (
     <>
@@ -15,7 +20,7 @@ const Card = (props) => {
         </ul>
         <div className="card-btns" >
           <button><FaEdit /></button>
-          <button><AiFillDelete /></button>
+          <button onClick={onDelete}><AiFillDelete /></button>
         </div>
     </div>
     </>
