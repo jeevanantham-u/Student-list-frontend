@@ -5,104 +5,10 @@
 }
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #e6e075;
-background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png");
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  /* background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png"); */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.header-wrapper{
-  position: fixed;
-  z-index: 1000;
-  width: 100%;
-}
-
-header{
-  position: relative;
-  height: 3em;
-  background: rgba(248, 224, 4, 1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 3em;
-  color: rgb(126, 126, 45);
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-}
-header form input{
-  width: 20em;
-  height: 2.2em;
-  color: rgb(126, 126, 45);
-  background: transparent;
-  border: 2px solid rgb(126, 126, 45);
-  outline: 0;
-  border-radius: 0.5em;
-  padding: 0.5em;
-  margin-right:.5em;
-}
-header form button, header button{
-  height: 2em;
-  border: 0;
-  outline: 0;
-  border-radius: 50%;
-  vertical-align: middle;
-  background: rgba(226, 209, 52, 0.945);
-  font-size: 1em;
-  padding: 0.5em;
-}
-h1{
-  font-weight: 400;
-  font-size: 2em;
-  font-style: normal;
-}
-ul{
-  list-style: none;
-}
-
-.cards-wrapper{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap:2em;
-  padding:6em  3em;
-}
-.card{
-  display: flex;
-  padding: 1em;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  /* From https://css.glass */
-background: rgba(255, 255, 255, 0.2);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(255, 255, 255, 0.3);
-}
-.card-details{
-  display: flex;
-  gap:0 1em;
-}
-.card-details li{
-  display: block;
-  min-width: 12em;
-  display: flex;
-  align-items: center;
-}
-.card-btns{
-    margin-left: 1.5em; 
-}
-.card-btns button{
-  background: rgba(248, 224, 4, 0.938);
-  border: 0;
-  border-radius: 0.5em;
-  color: rgb(126, 126, 45);
-  font-size: 1em;
-  padding: 0.5em;
-  outline: 0;
-}
-.card-btns button:first-child{
-  margin-right: 1.5em;
-}
-
