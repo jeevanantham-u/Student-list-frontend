@@ -5,6 +5,7 @@ export const fetchData = {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': "https://student-list-c0ck.onrender.com",
         },
       });
 
@@ -26,6 +27,7 @@ export const fetchData = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          'Access-Control-Allow-Origin': "https://student-list-c0ck.onrender.com",
         },
         body: JSON.stringify(newData),
       });
@@ -50,6 +52,7 @@ export const fetchData = {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          'Access-Control-Allow-Origin': "https://student-list-c0ck.onrender.com",
         },
         body: JSON.stringify(editData),
       });
@@ -72,6 +75,9 @@ export const fetchData = {
     try {
       const response = await fetch(url, {
         method: 'DELETE',
+        headers: {
+          'Access-Control-Allow-Origin': "https://student-list-c0ck.onrender.com",
+        },
       });
 
       if (!response.ok) {

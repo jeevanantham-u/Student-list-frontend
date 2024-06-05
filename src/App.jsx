@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "./FetchData";
 
+import 'devextreme/dist/css/dx.light.css';
+import {
+    DataGrid,
+} from 'devextreme-react/data-grid';
+
 const App = () => {
+  const url = "https://student-list-c0ck.onrender.com";
   const [data, setData] = useState([]);
   const [form, setForm] = useState(false);
   const [newData, setNewData] = useState({
@@ -17,7 +23,7 @@ const App = () => {
   useEffect(() => {
     const fetchAPI = async () => {
       try {
-        const response = await fetchData.get('http://localhost:8000/students/');
+        const response = await fetchData.get(`${url}/students/`);
         setData(response);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -36,7 +42,7 @@ const App = () => {
 
   const handleAdd = async () => {
     try {
-      const response = await fetchData.post('http://localhost:8000/students/', newData);
+      const response = await fetchData.post(`${url}/students/`, newData);
       setData((prevData) => [...prevData, response]);
       setNewData({
         _id: "",
@@ -53,7 +59,7 @@ const App = () => {
 
   const handleEdit = async () => {
     try {
-      const response = await fetchData.put(`http://localhost:8000/students/${newData._id}`, newData);
+      const response = await fetchData.put(`${url}/students/${newData._id}`, newData);
       setData((prevData) => prevData.map(student => student._id === newData._id ? response : student));
       setNewData({
         _id: "",
@@ -70,7 +76,7 @@ const App = () => {
 
   const handleDelete = async (id) => {
     try {
-      const success = await fetchData.delete(`http://localhost:8000/students/${id}`);
+      const success = await fetchData.delete(`${url}/students/${id}`);
       if (success) {
         setData((prevData) => prevData.filter(student => student._id !== id));
       }
@@ -150,6 +156,11 @@ const App = () => {
           <button onClick={() => handleDelete(d._id)}>Delete</button>
         </div>
       ))}
+      <DataGrid
+            allowColumnReordering={true} 
+            dataSource={data}
+            keyExpr="_id">
+        </DataGrid> 
     </div>
   );
 }
