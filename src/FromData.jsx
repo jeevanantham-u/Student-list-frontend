@@ -11,6 +11,7 @@ const FormData = () => {
   const url = "https://student-list-c0ck.onrender.com";
   const [data, setData] = useState([]);
   const [form, setForm] = useState(false);
+  const [formBtn, setFormBtn] = useState(false);
   const [newData, setNewData] = useState({
     _id: "",
     name: "",
@@ -86,6 +87,7 @@ const FormData = () => {
   const toAdd = () => {
     if(!form){
       setForm(true);
+      setFormBtn(true);
     } else {
       setForm(false);
     }
@@ -102,6 +104,7 @@ const FormData = () => {
   const toEdit = (currentData) => {
     if(!form){
       setForm(true);
+      setFormBtn(false);
     } 
     setEdit(true);
     setNewData(currentData);
@@ -119,37 +122,40 @@ const FormData = () => {
 
   return (
 
-<section className="layout">
-    <div className="header">
-      <h1>Students Regsiter</h1>
-    </div>
+
     <div className="main">
       <div>
-      <Button onClick={toAdd} variant="contained" endIcon={<AddToPhotosIcon />}>
-        Add
-      </Button>
-      <div>
+      <div id="btn-form-wrapper">
+       <div className="btn">
+        <Button onClick={toAdd} variant="contained" endIcon={<AddToPhotosIcon />}>
+            Add
+          </Button>
+       </div>
+       <div className="form">
         {form && (
-          <form onSubmit={handleSubmit} id='edit-form'>
-            <label>
-              Name: 
-              <input type="text" name="name" value={newData.name} onChange={handleChange} /><br /><br />
-            </label>
-            <label>
-              D.O.B:
-              <input type="text" name="dob" value={newData.dob} onChange={handleChange} /><br /><br />
-            </label>
-            <label>
-              Gender:
-              <input type="text" name="gender" value={newData.gender} onChange={handleChange} /><br /><br />
-            </label>
-            <label>
-              E-mail:
-              <input type="email" name="email" value={newData.email} onChange={handleChange} /><br /><br />
-            </label>
-            <input type="submit" />
-          </form>
-        )}
+              <form onSubmit={handleSubmit} id='edit-form'>
+                <label>
+                  Name: 
+                  <input type="text" name="name" value={newData.name} onChange={handleChange} /><br /><br />
+                </label>
+                <label>
+                  D.O.B:
+                  <input type="text" name="dob" value={newData.dob} onChange={handleChange} /><br /><br />
+                </label>
+                <label>
+                  Gender:
+                  <input type="text" name="gender" value={newData.gender} onChange={handleChange} /><br /><br />
+                </label>
+                <label>
+                  E-mail:
+                  <input type="email" name="email" value={newData.email} onChange={handleChange} /><br /><br />
+                </label>
+                <Button type="submit" variant="contained" endIcon={<AddToPhotosIcon />}>
+                  {(formBtn) ? 'Add' : 'Edit'}
+                </Button>
+              </form>
+            )}
+       </div>
       </div>
       <div className="cards-wrapper">
         {data.map((d, index) => (
@@ -172,10 +178,7 @@ const FormData = () => {
       </div>
     </div>
   </div>
-  <div className="footer">
-    <p>Jeevanantham@2024 ❤</p>
-  </div>
-</section>
+  
   );
 }
 

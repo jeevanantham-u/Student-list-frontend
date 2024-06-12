@@ -18,8 +18,19 @@ import FormData from "./FromData";
   ]);
 
 const App = () => {
+
   return (
-    <RouterProvider router={router} />
+    <section className="layout">
+        <div className="header">
+            <h1>Students Regsiter</h1>
+        </div>
+
+        <RouterProvider router={router}  />
+
+        <div className="footer">
+            <p>Jeevanantham@2024 ❤</p>
+        </div>
+    </section>
   )
 }
 

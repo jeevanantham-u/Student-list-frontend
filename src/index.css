@@ -7,8 +7,7 @@
 }
 body {
   font-family: "Inconsolata", monospace;
-  background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png");
-  background-color: rgb(69, 202, 219);
+  background-image: url("https://www.transparenttextures.com/patterns/diagmonds-light.png");
   width: 100vw;
   overflow-x:hidden;
 }
@@ -73,7 +72,20 @@ code {
 .cards-wrapper{
   display: grid;
   grid-template-columns: auto auto auto auto;
+  row-gap: 20px;
   justify-content: space-evenly;
+}
+.table-wrapper, #btn-form-wrapper{
+  display: flex;
+  justify-content: center;
+}
+#btn-form-wrapper{
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+#btn-form-wrapper .btn, #btn-form-wrapper .form{
+  margin: auto;
 }
 
 .cards {
@@ -85,4 +97,15 @@ code {
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+@media screen and (max-width: 992px) {
+  .layout {
+    width: 100vw;
+    height: 100dvh;
+  }
+  .cards-wrapper{
+    grid-template-columns: auto ;
+    justify-content: space-evenly;
+  }
 }
