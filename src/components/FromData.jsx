@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchData } from "./FetchData";
+import { fetchData } from "../FetchData";
+import { ClipLoader } from 'react-spinners';
 
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -12,6 +13,7 @@ const FormData = () => {
   const [data, setData] = useState([]);
   const [form, setForm] = useState(false);
   const [formBtn, setFormBtn] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [newData, setNewData] = useState({
     _id: "",
     name: "",
@@ -26,8 +28,10 @@ const FormData = () => {
       try {
         const response = await fetchData.get(`${url}/students/`);
         setData(response);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
+        setLoading(false);
       }
     };
     fetchAPI();
@@ -125,59 +129,64 @@ const FormData = () => {
 
     <div className="main">
       <div>
-      <div id="btn-form-wrapper">
-       <div className="btn">
-        <Button onClick={toAdd} variant="contained" endIcon={<AddToPhotosIcon />}>
-            Add
-          </Button>
-       </div>
-       <div className="form">
-        {form && (
-              <form onSubmit={handleSubmit} id='edit-form'>
-                <label>
-                  Name: 
-                  <input type="text" name="name" value={newData.name} onChange={handleChange} /><br /><br />
-                </label>
-                <label>
-                  D.O.B:
-                  <input type="text" name="dob" value={newData.dob} onChange={handleChange} /><br /><br />
-                </label>
-                <label>
-                  Gender:
-                  <input type="text" name="gender" value={newData.gender} onChange={handleChange} /><br /><br />
-                </label>
-                <label>
-                  E-mail:
-                  <input type="email" name="email" value={newData.email} onChange={handleChange} /><br /><br />
-                </label>
-                <Button type="submit" variant="contained" endIcon={<AddToPhotosIcon />}>
-                  {(formBtn) ? 'Add' : 'Edit'}
+        <div id="btn-form-wrapper">
+        <div className="btn">
+          <Button onClick={toAdd} variant="contained" endIcon={<AddToPhotosIcon />}>
+              Add
+            </Button>
+        </div>
+        <div className="form">
+          {form && (
+                <form onSubmit={handleSubmit} id='edit-form'>
+                  <label>
+                    Name: 
+                    <input type="text" name="name" value={newData.name} onChange={handleChange} /><br /><br />
+                  </label>
+                  <label>
+                    D.O.B:
+                    <input type="text" name="dob" value={newData.dob} onChange={handleChange} /><br /><br />
+                  </label>
+                  <label>
+                    Gender:
+                    <input type="text" name="gender" value={newData.gender} onChange={handleChange} /><br /><br />
+                  </label>
+                  <label>
+                    E-mail:
+                    <input type="email" name="email" value={newData.email} onChange={handleChange} /><br /><br />
+                  </label>
+                  <Button type="submit" variant="contained" endIcon={<AddToPhotosIcon />}>
+                    {(formBtn) ? 'Add' : 'Edit'}
+                  </Button>
+                </form>
+              )}
+        </div>
+        </div>
+
+        {(loading) ? <div id='loader-container'>
+                      <ClipLoader color="#123abc" loading={true} size={150} />
+                     </div> 
+        :<div className="cards-wrapper">
+          {data.map((d, index) => (
+            <div key={index} className="cards">
+              <h1>{d.name}</h1>
+              <p>ID: {d._id}</p>
+              <p>DOB: {d.dob}</p>
+              <p>gender: {d.gender}</p>
+              <p>E-mail: {d.email}</p>
+              <Stack direction="row" spacing={2}>
+                <Button onClick={() => handleDelete(d._id)} variant="outlined" startIcon={<DeleteIcon />}>
+                  Delete
                 </Button>
-              </form>
-            )}
-       </div>
-      </div>
-      <div className="cards-wrapper">
-        {data.map((d, index) => (
-          <div key={index} className="cards">
-            <h1>{d.name}</h1>
-            <p>ID: {d._id}</p>
-            <p>DOB: {d.dob}</p>
-            <p>gender: {d.gender}</p>
-            <p>E-mail: {d.email}</p>
-            <Stack direction="row" spacing={2}>
-              <Button onClick={() => handleDelete(d._id)} variant="outlined" startIcon={<DeleteIcon />}>
-                Delete
-              </Button>
-              <Button onClick={() => toEdit(d)} variant="contained" endIcon={<SendIcon />}>
-                Edit
-              </Button>
-            </Stack>
-          </div>
-        ))}
+                <Button onClick={() => toEdit(d)} variant="contained" endIcon={<SendIcon />}>
+                  Edit
+                </Button>
+              </Stack>
+            </div>
+          ))}
+        </div> }
+        
       </div>
     </div>
-  </div>
   
   );
 }

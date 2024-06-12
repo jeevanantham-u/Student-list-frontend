@@ -4,7 +4,7 @@ import {
   } from "react-router-dom";
 
 import Table from './components/Table';
-import FormData from "./FromData";
+import FormData from "./components/FromData";
 
   const router = createBrowserRouter([
     {

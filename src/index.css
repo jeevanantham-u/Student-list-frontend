@@ -58,6 +58,14 @@ code {
   place-items: center; 
 }
 
+#loader-container
+  {
+    display: 'flex';
+    justify-content: 'center';
+    align-items: 'center';
+    height: '100vh';
+  }
+
 #edit-form{
   max-width: 300px;
   padding: 20px;
