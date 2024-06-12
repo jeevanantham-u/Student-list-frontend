@@ -165,7 +165,7 @@ const FormData = () => {
         {(loading) ? <div id='loader-container'>
                       <ClipLoader color="#123abc" loading={true} size={150} />
                      </div> 
-        :<div className="cards-wrapper">
+        : <div className="cards-wrapper">
           {data.map((d, index) => (
             <div key={index} className="cards">
               <h1>{d.name}</h1>
@@ -183,8 +183,8 @@ const FormData = () => {
               </Stack>
             </div>
           ))}
-        </div> }
-        
+        </div>
+         }   
       </div>
     </div>
   

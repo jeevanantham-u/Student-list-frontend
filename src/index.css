@@ -59,11 +59,11 @@ code {
 }
 
 #loader-container
-  {
-    display: 'flex';
-    justify-content: 'center';
-    align-items: 'center';
-    height: '100vh';
+  { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
 
 #edit-form{
