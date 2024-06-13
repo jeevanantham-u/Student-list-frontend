@@ -43,7 +43,7 @@ const Table = () => {
       dataSource={data}
       keyExpr="_id"
       showBorders={true}
-      width="60%"
+      width="90%"
       onContentReady={onContentReady}
       >
         <Column dataField="name" caption="Name"  width= 'auto' />
